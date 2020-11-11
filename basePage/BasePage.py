@@ -4,15 +4,17 @@ Author : Rex
 File : BasePage.py 
 Software: PyCharm
 """
+from driver.driver import *
 
-class BasePage():
+class BasePage(Driver):
+    poco=Driver().get_poco()
 
     def find_ele(self,ele):
         """
         查找元素
         :return:返回查找到的元素
         """
-        target_ele=ele.wait(20)
+        target_ele=self.poco(ele).wait(30)
         if target_ele.exists():
             return target_ele
         else:

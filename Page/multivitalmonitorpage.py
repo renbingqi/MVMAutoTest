@@ -1,19 +1,21 @@
 """
 Time : 2020/10/20 14:24 
 Author : Rex
-File : MultiVitalMonitor.py
+File : multivitalmonitorpage.py
 Software: PyCharm
 """
-from Page.DashboardPage import Dashboard
 from basePage.BasePage import BasePage
 
 
+
+
 class MultiVitalMonitor(BasePage):
-    BackButton=None
-    Skip=None
-    DisconnectDeviceButton=None
+    BackButton="Navigate up"
+    Skip="com.vivalnk.vitalsmonitor:id/btnSkip"
+    DisconnectDeviceButton="com.vivalnk.vitalsmonitor:id/btnDelete"
 
     def back(self):
+        from Page.dashboard import Dashboard
         self.find_ele(self.BackButton).click()
         return Dashboard()
 
@@ -22,9 +24,11 @@ class MultiVitalMonitor(BasePage):
         return MultiVitalMonitor()
 
     def skip(self):
+        from Page.dashboard import Dashboard
         self.find_ele(self.Skip).click()
         return Dashboard()
-
+if __name__ == '__main__':
+    print("123")
 
 
 

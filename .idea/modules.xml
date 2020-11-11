@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/MVM Android Auto Test.iml" filepath="$PROJECT_DIR$/.idea/MVM Android Auto Test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/MVMAndroidAutoTest.iml" filepath="$PROJECT_DIR$/.idea/MVMAndroidAutoTest.iml" />
     </modules>
   </component>
 </project>
