@@ -16,9 +16,11 @@ class Dashboard(BasePage):
     ECGPatchButton="com.vivalnk.vitalsmonitor:id/tvBattery330"
     TempPatchButton="com.vivalnk.vitalsmonitor:id/tvBattery200"
     SpO2PatchButton="com.vivalnk.vitalsmonitor:id/tvBatterySpo2"
+    title ="android.widget.TextView"
     isecgconnect=None
     istempconnect=None
     isspo2connect=None
+
 
     def returnECGPage(self):
         from Page.pairingyourpatchpage import PairingYourPatch
@@ -81,10 +83,22 @@ class Dashboard(BasePage):
                 ele_list.append(ele.get_text())
         return ele_list
 
+    def return_dashboard(self):
+        while True:
+            if self.text(self.title) != "Multi Vital Monitor":
+                self.back()
+            else:
+                break
+
+
+
+
+
 if __name__ == '__main__':
     # Driver().connect_device()
-    print(Dashboard().get_dashboard_ele())
-
+    # print(Dashboard().get_dashboard_ele())
+    Dashboard().return_dashboard()
+    # Dashboard().returnTempPage()
 
 
 

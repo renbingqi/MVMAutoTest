@@ -1,7 +1,7 @@
 """
 Time : 2020/10/27 16:43 
 Author : Rex
-File : testUI.py
+File : test_UI.py
 Software: PyCharm
 """
 import time
@@ -19,7 +19,7 @@ from driver.driver import Driver
 @ddt
 
 
-class Test_MVM():
+class Test_UI():
 
     @pytest.fixture(scope="module")
     def setup(self):
@@ -29,15 +29,15 @@ class Test_MVM():
 
     @pytest.fixture(scope="class")
     def setup_dashboard(self):
-        time.sleep(10)
+        Dashboard().return_dashboard()
         ele_list = GetYaml().get_dashboard_yaml()
+        time.sleep(1)
         dashboardele_list = Dashboard().get_dashboard_ele()
         return (ele_list, dashboardele_list)
 
     @pytest.fixture(scope="class")
     def setup_menu(self):
         Dashboard().returnMenu()
-        time.sleep(5)
         ele_list = GetYaml().get_menu_yaml()
         menu_list = Menu().get_menu_ele()
         return (ele_list, menu_list)
@@ -45,7 +45,6 @@ class Test_MVM():
     @pytest.fixture(scope="class")
     def setup_Settings(self):
         Menu().returnSettings()
-        time.sleep(5)
         ele_list = GetYaml().get_Settings_yaml()
         menu_list = Settings().get_settings_ele()
         return (ele_list, menu_list)
@@ -53,7 +52,6 @@ class Test_MVM():
     @pytest.fixture(scope="class")
     def setup_YourProfile(self):
         Settings().return_YourProfile()
-        time.sleep(5)
         ele_list = GetYaml().get_YourProfile_yaml()
         menu_list = YourProfile().get_yourprofile_ele()
         return (ele_list, menu_list)
@@ -62,9 +60,7 @@ class Test_MVM():
     def setup_PairingYourPatchECG(self):
         YourProfile().close()
         Settings().close()
-        time.sleep(0.5)
         Dashboard().returnECGPage()
-        time.sleep(5)
         ele_list = GetYaml().get_PairingYourPatchECG_yaml()
         menu_list = PairingYourPatch().get_PairingYourPatchECG_ele()
         return (ele_list, menu_list)
@@ -73,7 +69,6 @@ class Test_MVM():
     def setup_PairingYourPatchTemp(self):
         PairingYourPatch().skip()
         Dashboard().returnTempPage()
-        time.sleep(5)
         ele_list = GetYaml().get_PairingYourPatchTemp_yaml()
         menu_list = PairingYourPatch().get_PairingYourPatchTemp_ele()
         return (ele_list, menu_list)
@@ -82,7 +77,6 @@ class Test_MVM():
     def setup_PairingYourPatchSpO2(self):
         PairingYourPatch().skip()
         Dashboard().returnSpO2()
-        time.sleep(5)
         ele_list = GetYaml().get_PairingYourPatchSpO2_yaml()
         menu_list = PairingYourPatch().get_PairingYourPatchSpO2_ele()
         return (ele_list, menu_list)
@@ -100,6 +94,7 @@ class Test_MVM():
         ele_list = setup_menu[0]
         for ele in ele_list:
             assert ele in setup_menu[1]
+
 
 
 

@@ -4,6 +4,7 @@ Author : Rex
 File : menuPage.py
 Software: PyCharm
 """
+from Page.dashboard import Dashboard
 from basePage.BasePage import BasePage
 
 
@@ -13,6 +14,7 @@ class Menu(BasePage):
     PrivacyPolicyButton="com.vivalnk.vitalsmonitor:id/tvPrivacy"
     TermsAndConditionsButton="com.vivalnk.vitalsmonitor:id/tvTerms"
     CloseButton="com.vivalnk.vitalsmonitor:id/ivClose"
+    title="android.widget.TextView"
 
     def returnConnectDevice(self):
         self.find_ele(self.ConnectedDeviceButton).click()
@@ -37,5 +39,15 @@ class Menu(BasePage):
                 ele_list.append(ele.get_text())
         return ele_list
 
+    def return_Menu(self):
+        while True:
+            # print(self.poco(self.title)[1].get_text())
+
+            if self.poco(self.title)[1].get_text() != "Menu":
+                Dashboard().return_dashboard()
+                Dashboard().returnMenu()
+            else:
+                break
+
 if __name__ == '__main__':
-    print(Menu().get_menu_ele())
+    Menu().return_Menu()

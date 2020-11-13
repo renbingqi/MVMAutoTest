@@ -20,6 +20,22 @@ class BasePage(Driver):
         else:
             print("等待超时，元素未找到")
 
+    # def find_Menu(self,ele):
+    #     target_ele=self.poco(ele)[1].wait(30)
+    #     if target_ele.exists():
+    #         return target_ele
+    #     else:
+    #         print("等待超时，元素未找到")
+
+
     def text(self,ele):
         target_ele=self.find_ele(ele)
         return target_ele.get_text()
+
+    # def find(self,ele):
+    #     target_ele=self.poco(ele)
+    #     ele_list=find_all(target_ele)
+    #     return ele_list
+
+
+
