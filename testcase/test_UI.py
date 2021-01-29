@@ -27,6 +27,7 @@ class Test_UI():
         yield
         Dashboard().close_app()
 
+    #获取预期元素列表&dashboard元素列表
     @pytest.fixture(scope="class")
     def setup_dashboard(self):
         Dashboard().return_dashboard()
@@ -35,6 +36,7 @@ class Test_UI():
         dashboardele_list = Dashboard().get_dashboard_ele()
         return (ele_list, dashboardele_list)
 
+    # 获取预期元素列表&menu元素列表
     @pytest.fixture(scope="class")
     def setup_menu(self):
         Dashboard().returnMenu()
@@ -42,6 +44,7 @@ class Test_UI():
         menu_list = Menu().get_menu_ele()
         return (ele_list, menu_list)
 
+    # 获取预期元素列表&Setting元素列表
     @pytest.fixture(scope="class")
     def setup_Settings(self):
         Menu().returnSettings()
@@ -49,6 +52,7 @@ class Test_UI():
         menu_list = Settings().get_settings_ele()
         return (ele_list, menu_list)
 
+    # 获取预期元素列表&YourProfile元素列表
     @pytest.fixture(scope="class")
     def setup_YourProfile(self):
         Settings().return_YourProfile()
@@ -56,6 +60,7 @@ class Test_UI():
         menu_list = YourProfile().get_yourprofile_ele()
         return (ele_list, menu_list)
 
+    # 获取预期元素列表&pairingYourPatchECG元素列表
     @pytest.fixture(scope="class")
     def setup_PairingYourPatchECG(self):
         YourProfile().close()
@@ -65,6 +70,7 @@ class Test_UI():
         menu_list = PairingYourPatch().get_PairingYourPatchECG_ele()
         return (ele_list, menu_list)
 
+    # 获取预期元素列表&pairingYourPatchTemp元素列表
     @pytest.fixture(scope="class")
     def setup_PairingYourPatchTemp(self):
         PairingYourPatch().skip()
@@ -73,6 +79,7 @@ class Test_UI():
         menu_list = PairingYourPatch().get_PairingYourPatchTemp_ele()
         return (ele_list, menu_list)
 
+    # 获取预期元素列表&PairingYourPatchSpO2元素列表
     @pytest.fixture(scope="class")
     def setup_PairingYourPatchSpO2(self):
         PairingYourPatch().skip()
@@ -83,46 +90,49 @@ class Test_UI():
 
 
 #--------------------------------------------------------------------------------------
+    #dashboard元素测试
     @pytest.mark.usefixtures("setup")
     def test_dashboard_ele(self,setup_dashboard):
         ele_list=setup_dashboard[0]
         for ele in ele_list:
             assert ele in setup_dashboard[1]
 
+    #menu页面元素测试
     @pytest.mark.usefixtures("setup")
     def test_menu_ele(self,setup_menu):
         ele_list = setup_menu[0]
         for ele in ele_list:
             assert ele in setup_menu[1]
 
-
-
-
+    #settings页面元素测试
     @pytest.mark.usefixtures("setup")
     def test_settings_ele(self,setup_Settings):
         ele_list = setup_Settings[0]
         for ele in ele_list:
             assert ele in setup_Settings[1]
 
+    #yourprofile页面元素测试
     @pytest.mark.usefixtures("setup")
     def test_yourprofile_ele(self,setup_YourProfile):
         ele_list = setup_YourProfile[0]
         for ele in ele_list:
             assert ele in setup_YourProfile[1]
 
-
+    #pairingYourPatchECG页面元素测试
     @pytest.mark.usefixtures("setup")
     def test_PairingYourPatchECG_ele(self,setup_PairingYourPatchECG):
         ele_list = setup_PairingYourPatchECG[0]
         for ele in ele_list:
             assert ele in setup_PairingYourPatchECG[1]
 
+    #pairingYourPatchTemp页面元素测试
     @pytest.mark.usefixtures("setup")
     def test_PairingYourPatchTemp_ele(self,setup_PairingYourPatchTemp):
         ele_list = setup_PairingYourPatchTemp[0]
         for ele in ele_list:
             assert ele in setup_PairingYourPatchTemp[1]
 
+    #pairingYourPatch页面元素测试
     @pytest.mark.usefixtures("setup")
     def test_PairingYourPatchSpo2_ele(self,setup_PairingYourPatchSpO2):
         ele_list = setup_PairingYourPatchSpO2[0]
