@@ -5,7 +5,6 @@ File : test_UI.py
 Software: PyCharm
 """
 import time
-
 from Page.dashboard import Dashboard
 import pytest
 from Page.menuPage import Menu
@@ -17,13 +16,11 @@ from ddt import ddt,data
 import unittest
 from driver.driver import Driver
 @ddt
-
-
 class Test_UI():
 
     @pytest.fixture(scope="module")
     def setup(self):
-        Dashboard().start_app()
+        Dashboard().start_app("com.vivalnk.cardiacscout.beta")
         yield
         Dashboard().close_app()
 
